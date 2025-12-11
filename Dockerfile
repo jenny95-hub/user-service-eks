@@ -1,4 +1,4 @@
-# pulls Python from AWS ECR Public Registry
+# Use lightweight Python image
 FROM public.ecr.aws/docker/library/python:3.11-slim
 
 # Set working directory
