@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: python-app
-          image: 772693223288.dkr.ecr.us-east-1.amazonaws.com/python-app:latest
+          image: 772693223288.dkr.ecr.us-east-1.amazonaws.com/user-service:latest
           ports:
             - containerPort: 8000
           resources:
