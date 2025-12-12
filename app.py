@@ -9,7 +9,7 @@ users = [
 ]
 
 # Get all users
-@app.route("/users", methods=["GET"])
+@app.route("/", methods=["GET"])
 def get_users():
     return jsonify(users)
 
