@@ -14,7 +14,7 @@ def get_users():
     return jsonify(users)
 
 # Add a new user
-@app.route("/users", methods=["POST"])
+@app.route("/", methods=["POST"])
 def add_user():
     new_user = request.get_json()
     users.append(new_user)
