@@ -9,7 +9,7 @@ phases:
   pre_build:
     commands:
       - echo Updating kubeconfig
-      - aws eks update-kubeconfig --region us-east-1 --name prod-eks-cluster
+      - aws eks update-kubeconfig --region us-east-1 --name prod-eks-cluster --role-arn arn:aws:iam::772693223288:role/service-role/codebuild-eks-deploy-service-role-2
 
   build:
     commands:
