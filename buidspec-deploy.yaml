@@ -8,16 +8,13 @@ env:
 phases:
   pre_build:
     commands:
-      - echo "Configuring kubectl..."
-      - aws eks update-kubeconfig --region $AWS_DEFAULT_REGION --name $CLUSTER_NAME
+      - echo Updating kubeconfig
+      - aws eks update-kubeconfig --region us-east-1 --name prod-eks-cluster
 
   build:
     commands:
-      - echo "Deploying manifests to EKS..."
-      - kubectl apply -f k8s/deployment.yaml
-      - kubectl apply -f k8s/service.yaml
-      - kubectl apply -f k8s/hpa.yaml
-      - kubectl apply -f k8s/ingress.yaml
+      - echo Deploying to EKS
+      - kubectl apply -f k8s/
 
   post_build:
     commands:
