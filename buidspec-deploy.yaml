@@ -1,0 +1,24 @@
+version: 0.2
+
+env:
+  variables:
+    AWS_DEFAULT_REGION: us-east-1
+    CLUSTER_NAME: prod-eks-cluster
+
+phases:
+  pre_build:
+    commands:
+      - echo "Configuring kubectl..."
+      - aws eks update-kubeconfig --region $AWS_DEFAULT_REGION --name $CLUSTER_NAME
+
+  build:
+    commands:
+      - echo "Deploying manifests to EKS..."
+      - kubectl apply -f k8s/deployment.yaml
+      - kubectl apply -f k8s/service.yaml
+      - kubectl apply -f k8s/hpa.yaml
+      - kubectl apply -f k8s/ingress.yaml
+
+  post_build:
+    commands:
+      - echo "Deployment completed successfully"
