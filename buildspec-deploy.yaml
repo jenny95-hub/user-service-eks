@@ -8,6 +8,8 @@ env:
 phases:
   pre_build:
     commands:
+      - echo "Caller identity:"
+      - aws sts get-caller-identity
       - echo Updating kubeconfig
       - aws eks update-kubeconfig --region us-east-1 --name prod-eks-cluster 
 
