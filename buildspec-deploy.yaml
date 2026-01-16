@@ -12,10 +12,12 @@ phases:
       - aws sts get-caller-identity
       - echo Updating kubeconfig
       - aws eks update-kubeconfig --region us-east-1 --name prod-eks-cluster 
+      - export AWS_EKS_TOKEN=true
 
   build:
     commands:
       - echo Deploying to EKS
+      - kubectl get ns
       - kubectl apply -f k8s/ --validate=false
 
   post_build:
