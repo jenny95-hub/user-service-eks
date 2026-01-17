@@ -13,11 +13,13 @@ phases:
       - echo Updating kubeconfig
       - aws eks update-kubeconfig --region us-east-1 --name prod-eks-cluster 
       - export AWS_EKS_TOKEN=true
+      - IMAGE_TAG=$(cat imageTag.txt)
 
   build:
     commands:
       - echo Deploying to EKS
       - kubectl get ns
+      - sed -i "s|PLACEHOLDER|$IMAGE_TAG|g" k8s/deployment.yaml
       - kubectl apply -f k8s/ --validate=false
 
   post_build:
