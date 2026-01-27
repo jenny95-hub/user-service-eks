@@ -13,7 +13,8 @@ phases:
       - echo Updating kubeconfig
       - aws eks update-kubeconfig --region us-east-1 --name prod-eks-cluster 
       - export AWS_EKS_TOKEN=true
-      - IMAGE_TAG=$(cat imageTag.txt)
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=$COMMIT_HASH
 
   build:
     commands:
