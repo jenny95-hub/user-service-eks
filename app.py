@@ -16,7 +16,7 @@ users = [
 
 @app.route("/", methods=["GET"])
 def get_users():
-    app.logger.info("GET / called – returning users list")
+    print("🔥 USER API HIT FROM FLUENT BIT TEST 🔥")
     return jsonify(users)
 
 @app.route("/", methods=["POST"])
